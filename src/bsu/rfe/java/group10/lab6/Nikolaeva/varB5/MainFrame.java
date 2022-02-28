@@ -8,6 +8,7 @@ import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
@@ -16,6 +17,7 @@ public class MainFrame extends JFrame {
 	private static final int HEIGHT = 500;
 	private JMenuItem pauseMenuItem;
 	private JMenuItem resumeMenuItem;
+	private JCheckBoxMenuItem snowBallMenuItem;
 	private Field field = new Field();
 	
 	public MainFrame() {
@@ -35,6 +37,7 @@ public class MainFrame extends JFrame {
 				if (!pauseMenuItem.isEnabled() &&
 				!resumeMenuItem.isEnabled()) {
 					pauseMenuItem.setEnabled(true);
+					snowBallMenuItem.setEnabled(true);
 				}
 			}
 		};
@@ -49,6 +52,7 @@ public class MainFrame extends JFrame {
 				field.pause();
 				pauseMenuItem.setEnabled(false);
 				resumeMenuItem.setEnabled(true);
+				snowBallMenuItem.setEnabled(false);
 			}
 		};
 		
@@ -60,12 +64,23 @@ public class MainFrame extends JFrame {
 				field.resume();
 				pauseMenuItem.setEnabled(true);
 				resumeMenuItem.setEnabled(false);
+				snowBallMenuItem.setEnabled(true);
 			}
 		};
 		
 		resumeMenuItem = controlMenu.add(resumeAction);
 		resumeMenuItem.setEnabled(false);
 		getContentPane().add(field, BorderLayout.CENTER);
+		
+		Action snowBallAction=new AbstractAction("Снежный ком") {
+			public void actionPerformed(ActionEvent event) {
+				
+			}
+		}; 
+		
+		snowBallMenuItem = new JCheckBoxMenuItem(snowBallAction);
+		controlMenu.add(snowBallMenuItem);
+		snowBallMenuItem.setEnabled(false);
 	}
 	
 	public static void main(String[] args) {
