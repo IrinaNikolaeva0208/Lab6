@@ -8,6 +8,7 @@ import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
 
@@ -74,7 +75,12 @@ public class MainFrame extends JFrame {
 		
 		Action snowBallAction=new AbstractAction("Снежный ком") {
 			public void actionPerformed(ActionEvent event) {
-				
+				try {
+				field.setSnowBall(snowBallMenuItem.isSelected());
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(MainFrame.this,"Введены неверные данные","Ошибка",JOptionPane.ERROR_MESSAGE);
+					snowBallMenuItem.setState(false);
+				}
 			}
 		}; 
 		
