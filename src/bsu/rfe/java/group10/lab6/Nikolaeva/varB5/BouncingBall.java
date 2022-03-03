@@ -71,6 +71,7 @@ public class BouncingBall implements Runnable {
 						}
 					}
 				}
+				System.out.println(counter);
 				Thread.sleep(16-speed);
 			}
 		} catch (InterruptedException ex) {}
@@ -83,9 +84,11 @@ public class BouncingBall implements Runnable {
 			Y=Y0;
 		}
 		else{
+			counter=0;
 			X=0;
 			Y=0;
 		}
+		
 	}
 	
 	public void paint(Graphics2D canvas) {
